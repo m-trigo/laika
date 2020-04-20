@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://src/scripts/Main.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/background.png" type="Texture" id=2]
@@ -7,6 +7,21 @@
 [ext_resource path="res://assets/sprites/dialogue_box.png" type="Texture" id=5]
 [ext_resource path="res://assets/fonts/PICO-8.tres" type="DynamicFont" id=6]
 [ext_resource path="res://assets/sprites/car.png" type="Texture" id=7]
+
+[sub_resource type="Animation" id=2]
+resource_name = "Move"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 24, 80 ), Vector2( 56, 80 ) ]
+}
 
 [sub_resource type="Animation" id=1]
 resource_name = "default"
@@ -22,7 +37,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.2, 0.4 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 28, 84 ), Vector2( 28, 83 ), Vector2( 28, 84 ) ]
+"values": [ Vector2( 0, 0 ), Vector2( 0, -1 ), Vector2( 0, 0 ) ]
 }
 
 [node name="Main" type="Node2D"]
@@ -83,11 +98,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Car" type="Sprite" parent="."]
-position = Vector2( 28, 84 )
-texture = ExtResource( 7 )
+[node name="Car" type="Node2D" parent="."]
+position = Vector2( 24, 80 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Car"]
+[node name="Move" type="AnimationPlayer" parent="Car"]
+anims/Move = SubResource( 2 )
+
+[node name="CarSprite" type="Sprite" parent="Car"]
+position = Vector2( 0, -0.165111 )
+texture = ExtResource( 7 )
+centered = false
+
+[node name="Idle" type="AnimationPlayer" parent="Car/CarSprite"]
 autoplay = "default"
 anims/default = SubResource( 1 )
 [connection signal="pressed" from="Background/Esc" to="." method="_on_Esc_pressed"]
