@@ -1,13 +1,16 @@
 extends Node2D
 
+signal arrived
+
 var stop_index : int = 0
 var stops : Array = []
 
-func move_car_to_next_stop() -> void:
+func move_car_to_next_stop( speed : float ) -> void:
 	stop_index = ( stop_index + 1 ) % len ( stops )
 	var anim = $Car/Move.get_animation( "Move" )
 	anim.track_set_key_value( 0, 0, $Car.position )
 	anim.track_set_key_value( 0, 1, stops[ stop_index ] )
+	$Car/Move.playback_speed = speed + 0.1
 	$Car/Move.play( "Move" )
 
 func _ready() -> void:
@@ -19,3 +22,6 @@ func _ready() -> void:
 		stop.centered = false
 		stop.position = pos + Vector2.DOWN * 12
 		add_child( stop )
+
+func _on_Move_animation_finished( _anim_name: String ) -> void:
+	emit_signal( "arrived" )

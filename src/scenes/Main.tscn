@@ -59,8 +59,8 @@ margin_top = 10.0
 custom_fonts/font = ExtResource( 6 )
 custom_colors/font_color = Color( 0.368627, 0.403922, 0.270588, 1 )
 text = "ENG
-EXH
 ELC
+EXH
 PER"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -68,3 +68,4 @@ __meta__ = {
 
 [node name="Track" parent="." instance=ExtResource( 7 )]
 [connection signal="pressed" from="Background/Esc" to="." method="_on_Esc_pressed"]
+[connection signal="arrived" from="Track" to="." method="_on_Track_arrived"]

@@ -51,7 +51,7 @@ frames = SubResource( 6 )
 frame = 4
 centered = false
 
-[node name="Peripherals" parent="." instance=ExtResource( 2 )]
+[node name="Peripheral" parent="." instance=ExtResource( 2 )]
 position = Vector2( 0, 24 )
 frames = SubResource( 6 )
 frame = 4
