@@ -81,6 +81,7 @@ func display_flavor() -> void:
 	$DialogueBox/Label.text = "<FLAVOR TEXT>"
 	state = STATE.FLAVOR
 
+var performance : float = 100
 var yourself : bool = false
 func _unhandled_key_input( event: InputEventKey ) -> void:
 	if event.pressed && event.scancode == KEY_ESCAPE:
@@ -140,10 +141,7 @@ func _unhandled_key_input( event: InputEventKey ) -> void:
 					display_flavor()
 			STATE.FLAVOR:
 				state = STATE.MOVING
-				var total_health : float = 0
-				for system in $Systems.get_children():
-					total_health += system.health()
-				$Track.move_car_to_next_stop( total_health / 16 )
+				$Track.move_car_to_next_stop( performance )
 
 func _on_Esc_pressed() -> void:
 		get_tree().quit()
@@ -169,3 +167,8 @@ func _on_Track_arrived() -> void:
 	event_index = ( event_index + 1 ) % len( events_list )
 	$DialogueBox/Label.text += "\n\n1. CONTINUE"
 	state = STATE.EVENT
+
+
+func _on_Systems_updated() -> void:
+	performance = $Systems.total_health() / 16.0 as float
+	$Performance.text = "SPEED: %4.0f%%" % ( performance * 100 )
