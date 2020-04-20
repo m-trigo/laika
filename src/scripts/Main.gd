@@ -52,7 +52,7 @@ var options = [
 var funds : int = 100
 
 func display_options() -> void:
-	var string := "WHAT WILL YOU DO?%55s" % "$%s\n" % funds
+	var string := "WHAT WILL YOU DO?%55s" % "FUNDS: $%s\n" % funds
 	for i in range( len( options ) ):
 		var option = options[ i ]
 		var formatted = "{number}. {name}{effect}{price}".format({
@@ -134,6 +134,11 @@ func _unhandled_key_input( event: InputEventKey ) -> void:
 func _on_Esc_pressed() -> void:
 		get_tree().quit()
 
+var deadline : float = 146
+var elapsed : float = 0
+func _process( _delta : float ) ->void :
+	elapsed = $AudioStreamPlayer.get_playback_position()
+	$Frame/TimeLeft.value = ( ( deadline - elapsed ) / deadline ) * 100
 func _ready() -> void :
 	randomize()
 	for system in $Systems.get_children():

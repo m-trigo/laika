@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://src/scripts/Main.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/background.png" type="Texture" id=2]
@@ -8,6 +8,8 @@
 [ext_resource path="res://assets/fonts/PICO-8.tres" type="DynamicFont" id=6]
 [ext_resource path="res://src/scenes/Track.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/audio/mounta_king.wav" type="AudioStream" id=8]
+[ext_resource path="res://assets/sprites/time_bar_empty.png" type="Texture" id=9]
+[ext_resource path="res://assets/sprites/time_bar_full.png" type="Texture" id=10]
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 1 )
@@ -65,6 +67,34 @@ margin_top = 8.0
 margin_right = -8.0
 margin_bottom = 16.0
 texture_normal = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TimeLeft" type="TextureProgress" parent="Frame"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -216.0
+margin_top = 9.0
+margin_right = -8.0
+margin_bottom = 15.0
+step = 0.1
+value = 100.0
+texture_under = ExtResource( 9 )
+texture_progress = ExtResource( 10 )
+fill_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TimeBarLabel" type="Label" parent="Frame"]
+margin_left = 192.0
+margin_top = 18.0
+margin_right = 312.0
+margin_bottom = 23.0
+custom_fonts/font = ExtResource( 6 )
+custom_colors/font_color = Color( 0.368627, 0.403922, 0.270588, 1 )
+text = "TIME UNTIL BABUSHKA'S BIRTHDAY"
 __meta__ = {
 "_edit_use_anchors_": false
 }
