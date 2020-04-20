@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://src/scripts/Main.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/background.png" type="Texture" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://assets/audio/mounta_king.wav" type="AudioStream" id=8]
 [ext_resource path="res://assets/sprites/time_bar_empty.png" type="Texture" id=9]
 [ext_resource path="res://assets/sprites/time_bar_full.png" type="Texture" id=10]
+[ext_resource path="res://assets/sprites/house.png" type="Texture" id=11]
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 1 )
@@ -65,6 +66,11 @@ __meta__ = {
 }
 
 [node name="Track" parent="." instance=ExtResource( 7 )]
+position = Vector2( 0, -8 )
+
+[node name="house" type="Sprite" parent="Track"]
+position = Vector2( 295, 84 )
+texture = ExtResource( 11 )
 
 [node name="Frame" type="Sprite" parent="."]
 texture = ExtResource( 2 )
