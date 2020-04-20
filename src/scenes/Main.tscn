@@ -78,7 +78,7 @@ __meta__ = {
 }
 
 [node name="Track" parent="." instance=ExtResource( 7 )]
-position = Vector2( 0, -8 )
+position = Vector2( 0, -16 )
 
 [node name="House" type="Sprite" parent="Track"]
 position = Vector2( 300, 84 )
@@ -118,13 +118,13 @@ __meta__ = {
 }
 
 [node name="TimeBarLabel" type="Label" parent="Frame"]
-margin_left = 192.0
+margin_left = 200.0
 margin_top = 18.0
 margin_right = 312.0
 margin_bottom = 23.0
 custom_fonts/font = ExtResource( 6 )
 custom_colors/font_color = Color( 0.368627, 0.403922, 0.270588, 1 )
-text = "TIME UNTIL BABUSHKA'S BIRTHDAY"
+text = "TIME UNTIL BABUSHKA BIRTHDAY"
 __meta__ = {
 "_edit_use_anchors_": false
 }
