@@ -15,7 +15,7 @@ func move_car_to_next_stop( speed : float ) -> void:
 
 func _ready() -> void:
 	for i in range( 9 ):
-		var pos : Vector2 = $Car.position + Vector2.RIGHT * 32 * i
+		var pos : Vector2 = Vector2( 24, 80 ) + Vector2.RIGHT * 32 * i
 		stops.push_back( pos )
 		var stop : Sprite = Sprite.new()
 		stop.texture = preload( "res://assets/sprites/stop.png" )
