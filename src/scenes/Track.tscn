@@ -6,7 +6,7 @@
 
 [sub_resource type="Animation" id=1]
 resource_name = "Move"
-length = 3.0
+length = 8.0
 step = 1.0
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:position")
@@ -15,7 +15,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 3 ),
+"times": PoolRealArray( 0, 8 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( -8, 80 ), Vector2( 24, 80 ) ]
@@ -46,7 +46,7 @@ texture = ExtResource( 3 )
 centered = false
 
 [node name="Car" type="Node2D" parent="."]
-position = Vector2( -8, 80 )
+position = Vector2( 24, 80 )
 
 [node name="Move" type="AnimationPlayer" parent="Car"]
 autoplay = "Move"

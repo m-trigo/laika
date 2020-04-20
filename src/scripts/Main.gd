@@ -40,28 +40,31 @@ var options = [
 	{
 		"name" : "REPAIR A SYSTEM",
 		"effect" : "+3 TO ONE SYSTEM",
-		"price": 20
+		"price": 30
 	},
 	{
 		"name" : "FULL SYSTEM CHECKUP",
 		"effect" : "+1 TO ALL SYSTEMS",
-		"price": 40
+		"price": 50
 	}
 ]
 
-var funds : int = 100
+var funds : int = 90
 
 func display_options() -> void:
-	var string := "WHAT WILL YOU DO?%55s" % "FUNDS: $%s\n" % funds
+	var string := "WHAT WILL YOU DO?%56s" % "FUNDS: $%s\n" % funds
 	for i in range( len( options ) ):
 		var option = options[ i ]
-		var formatted = "{number}. {name}{effect}{price}".format({
-			"number" : i + 1,
-			"name" : "%-38s" % option.name,
-			"effect" : "[%-24s]" % option.effect,
-			"price" : "%5s" % "$%d" % option.price
-		})
-		string += "\n" + formatted
+		if option.price > funds:
+			string += "\n%s. --- NOT ENOUGH FUNDS ---" % str( i + 1 )
+		else:
+			var formatted = "{number}. {name}{effect}{price}".format({
+				"number" : i + 1,
+				"name" : "%-38s" % option.name,
+				"effect" : "[%-24s]" % option.effect,
+				"price" : "%5s" % "$%d" % option.price
+			})
+			string += "\n" + formatted
 	string += "\n4. HIT THE ROAD. NO TIME TO WASTE!"
 	$DialogueBox/Label.text = string
 
@@ -95,9 +98,20 @@ func _unhandled_key_input( event: InputEventKey ) -> void:
 				match event.scancode:
 					KEY_1, KEY_2:
 						yourself = event.scancode == KEY_1
+						if yourself:
+							if funds - 10 < 0:
+								return
+							funds -= 10
+						else:
+							if funds - 30 < 0:
+								return
+							funds -= 30
 						display_system_options()
 						state = STATE.SYSTEMS
 					KEY_3:
+						if funds - 50 < 0:
+							return
+						funds -= 50
 						for system in $Systems.get_children():
 							system.heal( 1 )
 						display_flavor()
@@ -142,7 +156,7 @@ func _process( _delta : float ) ->void :
 func _ready() -> void :
 	randomize()
 	for system in $Systems.get_children():
-		system.damage( 1 )
+		system.damage( randi() % 2 + 1 )
 	for system in events.keys():
 		for event in events[ system ]:
 			events_list.push_back( { "system": system, "text" : event } )

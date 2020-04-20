@@ -10,7 +10,8 @@ func move_car_to_next_stop( speed : float ) -> void:
 	var anim = $Car/Move.get_animation( "Move" )
 	anim.track_set_key_value( 0, 0, $Car.position )
 	anim.track_set_key_value( 0, 1, stops[ stop_index ] )
-	$Car/Move.playback_speed = speed + 0.1
+	$Car/Move.playback_speed = speed
+	print ( $Car/Move.playback_speed )
 	$Car/Move.play( "Move" )
 
 func _ready() -> void:
