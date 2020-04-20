@@ -52,7 +52,7 @@ var options = [
 var funds : int = 90
 
 func display_options() -> void:
-	var string := "WHAT WILL YOU DO?%56s" % "FUNDS: $%s\n" % funds
+	var string := "WHAT WILL YOU DO?\n"
 	for i in range( len( options ) ):
 		var option = options[ i ]
 		if option.price > funds:
@@ -79,6 +79,7 @@ func display_system_options() -> void:
 
 func display_flavor() -> void:
 	$DialogueBox/Label.text = "<FLAVOR TEXT>"
+	$Funds.text = "FUNDS: $%s" % funds
 	state = STATE.FLAVOR
 
 var performance : float = 100

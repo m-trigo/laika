@@ -65,11 +65,23 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Funds" type="Label" parent="."]
+margin_left = 265.0
+margin_top = 101.0
+margin_right = 305.0
+margin_bottom = 106.0
+custom_fonts/font = ExtResource( 6 )
+custom_colors/font_color = Color( 0.368627, 0.403922, 0.270588, 1 )
+text = "FUNDS: $90"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Track" parent="." instance=ExtResource( 7 )]
 position = Vector2( 0, -8 )
 
-[node name="house" type="Sprite" parent="Track"]
-position = Vector2( 295, 84 )
+[node name="House" type="Sprite" parent="Track"]
+position = Vector2( 300, 84 )
 texture = ExtResource( 11 )
 
 [node name="Frame" type="Sprite" parent="."]
