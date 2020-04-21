@@ -16,7 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="laika"
-run/main_scene="res://src/scenes/Main.tscn"
+run/main_scene="res://src/scenes/Title.tscn"
 
 [display]
 
