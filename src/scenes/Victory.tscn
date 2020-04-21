@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/fonts/kremlin_small.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/sprites/background.png" type="Texture" id=2]
+
+[node name="Label" type="Node2D"]
+
+[node name="background" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+centered = false
+
+[node name="Label" type="Label" parent="background"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -149.0
+margin_top = -83.0
+margin_right = 158.0
+margin_bottom = 82.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.368627, 0.403922, 0.270588, 1 )
+text = "BaBushka loved scarF
+
+I ate Borsch
+and ButerBrod
+
+old laika survived
+another 23 years.   end"
+__meta__ = {
+"_edit_use_anchors_": false
+}

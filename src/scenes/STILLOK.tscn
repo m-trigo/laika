@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/sprites/background.png" type="Texture" id=1]
+[ext_resource path="res://assets/fonts/kremlin_small.tres" type="DynamicFont" id=2]
+
+[node name="Sprite" type="Sprite"]
+texture = ExtResource( 1 )
+centered = false
+
+[node name="Label" type="Label" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 48.0
+margin_top = 23.0
+margin_right = -5.0
+margin_bottom = 22.0
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.368627, 0.403922, 0.270588, 1 )
+text = "YOU WERE LATE
+
+BUT YOUR BABUSHKA 
+STILL LOVES YOU
+VERY MUCH"
+__meta__ = {
+"_edit_use_anchors_": false
+}
