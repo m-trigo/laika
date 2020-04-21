@@ -77,10 +77,31 @@ func display_system_options() -> void:
 		})
 	$DialogueBox/Label.text = string
 
+
+var flavor_texts = [
+	"YOU SHIFT INTO DRIVE AND THE CD PLAYER DIES.",
+	"YOU HIT THE BREAK AND THE HOOD POPS OPEN.",
+	"YOU TURN LEFT AND THE TRUNK OPENS.",
+	"YOU HIT A HOLE AND THE PASSENGER DOOR OPENS.",
+	"YOU LOWER YOUR WINDOW AND THE RADIO STARTS PLAYING.",
+	"YOU HIT THE GAS AND YOUR HONK GETS STUCK.",
+	"YOU HONK, BUT WIPER FLUID STARTS INSTEAD.",
+	"YOU HAVE NO A/C.",
+	"YOU RELEASE THE E-BREAK AND THE ENGINE LIGHT COMES ON."
+]
+var flavor_index : int = 0
+
 func display_flavor() -> void:
-	$DialogueBox/Label.text = "<FLAVOR TEXT>"
+
+	var text = flavor_texts[ flavor_index ]
+	text += "\n\n\n\nBUT YOU PUSH FORWARD."
+	text += "\nLOVE FOR BABUSHKA FILLS YOU WITH DETERMINATION."
+	flavor_index = ( flavor_index + 1 ) % len ( flavor_texts )
+
+	$DialogueBox/Label.text = text
 	$Funds.text = "FUNDS: $%s" % funds
-	state = STATE.FLAVOR
+	$Track.move_car_to_next_stop( performance )
+	state = STATE.MOVING
 
 var performance : float = 100
 var yourself : bool = false
@@ -140,9 +161,6 @@ func _unhandled_key_input( event: InputEventKey ) -> void:
 					else:
 						choice.heal( 3 )
 					display_flavor()
-			STATE.FLAVOR:
-				state = STATE.MOVING
-				$Track.move_car_to_next_stop( performance )
 
 func _on_Esc_pressed() -> void:
 		get_tree().quit()
@@ -152,6 +170,7 @@ var elapsed : float = 0
 func _process( _delta : float ) ->void :
 	elapsed = $AudioStreamPlayer.get_playback_position()
 	$Frame/TimeLeft.value = ( ( deadline - elapsed ) / deadline ) * 100
+
 func _ready() -> void :
 	randomize()
 	for system in $Systems.get_children():
@@ -160,6 +179,7 @@ func _ready() -> void :
 		for event in events[ system ]:
 			events_list.push_back( { "system": system, "text" : event } )
 	events_list.shuffle()
+	flavor_texts.shuffle()
 
 func _on_Track_arrived() -> void:
 	var event = events_list[ event_index ]
