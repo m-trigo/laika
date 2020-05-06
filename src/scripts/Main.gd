@@ -60,7 +60,7 @@ func display_options() -> void:
 		else:
 			var formatted = "{number}. {name}{effect}{price}".format({
 				"number" : i + 1,
-				"name" : "%-38s" % option.name,
+				"name" : "%-37s" % option.name,
 				"effect" : "[%-24s]" % option.effect,
 				"price" : "%5s" % "$%d" % option.price
 			})
@@ -170,7 +170,7 @@ var elapsed : float = 0
 func _process( _delta : float ) ->void :
 	elapsed = $AudioStreamPlayer.get_playback_position()
 	if elapsed > 150:
-		get_tree().change_scene("res://src/scenes/STILLOK.tscn")
+		get_tree().change_scene("res://src/scenes/GameOver.tscn")
 	$Frame/TimeLeft.value = ( ( deadline - elapsed ) / deadline ) * 100
 
 func _ready() -> void :

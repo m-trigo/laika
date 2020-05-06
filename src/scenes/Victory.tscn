@@ -3,30 +3,30 @@
 [ext_resource path="res://assets/fonts/kremlin_small.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/sprites/background.png" type="Texture" id=2]
 
-[node name="Label" type="Node2D"]
+[node name="Victory" type="Node2D"]
 
-[node name="background" type="Sprite" parent="."]
+[node name="Frame" type="Sprite" parent="."]
+scale = Vector2( 3, 3 )
 texture = ExtResource( 2 )
 centered = false
 
-[node name="Label" type="Label" parent="background"]
+[node name="Label" type="Label" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -149.0
-margin_top = -83.0
-margin_right = 158.0
-margin_bottom = 82.0
+margin_left = 78.0
+margin_top = 50.0
+margin_right = 872.0
+margin_bottom = 473.0
 custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color = Color( 0.368627, 0.403922, 0.270588, 1 )
-text = "BaBushka loved scarF
+text = "BABUSHKA LOVED SCARF
 
-I ate Borsch
-and ButerBrod
+OLD LAIKA SURVIVED 
+ANOTHER 23 YEARS
 
-old laika survived
-another 23 years.   end"
+                                   END"
 __meta__ = {
 "_edit_use_anchors_": false
 }
