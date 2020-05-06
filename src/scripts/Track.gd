@@ -7,13 +7,10 @@ var stops : Array = []
 
 func move_car_to_next_stop( speed : float ) -> void:
 	stop_index = ( stop_index + 1 ) % len ( stops )
-	if stop_index == len( stops ) - 1:
-		get_tree().change_scene("res://src/scenes/Victory.tscn")
 	var anim = $Car/Move.get_animation( "Move" )
 	anim.track_set_key_value( 0, 0, $Car.position )
 	anim.track_set_key_value( 0, 1, stops[ stop_index ] )
 	$Car/Move.playback_speed = speed
-	print ( $Car/Move.playback_speed )
 	$Car/Move.play( "Move" )
 
 func _ready() -> void:
@@ -27,4 +24,6 @@ func _ready() -> void:
 		add_child( stop )
 
 func _on_Move_animation_finished( _anim_name: String ) -> void:
+	if stop_index == len( stops ) - 1:
+		get_tree().change_scene("res://src/scenes/Victory.tscn")
 	emit_signal( "arrived" )
