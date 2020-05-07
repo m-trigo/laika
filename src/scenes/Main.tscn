@@ -1,8 +1,7 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://src/scripts/Main.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/background.png" type="Texture" id=2]
-[ext_resource path="res://assets/sprites/esc_button.png" type="Texture" id=3]
 [ext_resource path="res://src/scenes/Systems.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/sprites/dialogue_box.png" type="Texture" id=5]
 [ext_resource path="res://assets/fonts/PICO-8.tres" type="DynamicFont" id=6]
@@ -95,19 +94,6 @@ texture = ExtResource( 11 )
 texture = ExtResource( 2 )
 centered = false
 
-[node name="Esc" type="TextureButton" parent="Frame"]
-visible = false
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -16.0
-margin_top = 8.0
-margin_right = -8.0
-margin_bottom = 16.0
-texture_normal = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="TimeLeft" type="TextureProgress" parent="Frame"]
 anchor_left = 1.0
 anchor_right = 1.0
@@ -141,4 +127,3 @@ stream = ExtResource( 8 )
 autoplay = true
 [connection signal="updated" from="Systems" to="." method="_on_Systems_updated"]
 [connection signal="arrived" from="Track" to="." method="_on_Track_arrived"]
-[connection signal="pressed" from="Frame/Esc" to="." method="_on_Esc_pressed"]
