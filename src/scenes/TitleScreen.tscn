@@ -1,26 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://assets/sprites/car.png" type="Texture" id=1]
+[ext_resource path="res://src/scenes/Laika.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/sprites/background.png" type="Texture" id=2]
 [ext_resource path="res://assets/fonts/kremlin_large.tres" type="DynamicFont" id=3]
 [ext_resource path="res://src/scripts/Title.gd" type="Script" id=4]
-
-[sub_resource type="Animation" id=1]
-resource_name = "New Anim"
-length = 0.4
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 0, 2 ), Vector2( 0, 0 ) ]
-}
 
 [node name="TitleScreen" type="Node2D"]
 script = ExtResource( 4 )
@@ -30,17 +13,8 @@ scale = Vector2( 3, 3 )
 texture = ExtResource( 2 )
 centered = false
 
-[node name="Start" type="Node2D" parent="Background"]
+[node name="Laika" parent="Background" instance=ExtResource( 1 )]
 position = Vector2( 150, 50 )
-
-[node name="Laika" type="Sprite" parent="Background/Start"]
-scale = Vector2( 2, 2 )
-texture = ExtResource( 1 )
-centered = false
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Background/Start/Laika"]
-autoplay = "New Anim"
-"anims/New Anim" = SubResource( 1 )
 
 [node name="UI" type="Control" parent="."]
 margin_right = 960.0
