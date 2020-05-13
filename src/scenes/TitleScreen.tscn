@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://src/scenes/Laika.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/sprites/background.png" type="Texture" id=2]
 [ext_resource path="res://assets/fonts/kremlin_large.tres" type="DynamicFont" id=3]
 [ext_resource path="res://src/scripts/Title.gd" type="Script" id=4]
+[ext_resource path="res://assets/fonts/kremlin_credits.tres" type="DynamicFont" id=5]
 
 [node name="TitleScreen" type="Node2D"]
 script = ExtResource( 4 )
@@ -35,6 +36,19 @@ margin_bottom = 65.0
 custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0.368627, 0.403922, 0.270588, 1 )
 text = "LAIkA"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="UI"]
+margin_left = 506.0
+margin_top = 197.0
+margin_right = 652.0
+margin_bottom = 216.0
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 0.368627, 0.403922, 0.270588, 1 )
+text = "murilo trigo's"
+uppercase = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
